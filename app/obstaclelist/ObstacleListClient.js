@@ -7,10 +7,11 @@ export default function ObstacleListClient() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const id = searchParams.get("id"); // Study ID
-  const title = searchParams.get("title"); // Study Title
+  const id = searchParams.get("id");
+  const title = searchParams.get("title");
 
   const [obstacles, setObstacles] = useState([]);
+  const [currentObstacleIndex, setCurrentObstacleIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -20,15 +21,14 @@ export default function ObstacleListClient() {
     const fetchObstacles = async () => {
       try {
         setLoading(true);
-        const res = await fetch("/data.json"); // Fetch the data.json file from public
+        const res = await fetch("/data.json"); // Fetch data.json from public directory
         if (!res.ok) throw new Error("Failed to fetch data.");
         const data = await res.json();
 
-        // Find the study based on ID
+        // Find the study by ID and set its obstacles
         const study = data.find((study) => study.id === parseInt(id));
         if (!study) throw new Error("Study not found.");
 
-        // Set obstacles for the study
         setObstacles(study.obstacles || []);
       } catch (err) {
         setError(err.message);
@@ -40,7 +40,15 @@ export default function ObstacleListClient() {
     fetchObstacles();
   }, [id]);
 
+  const handleNext = () => {
+    setCurrentObstacleIndex((prevIndex) => Math.min(prevIndex + 1, obstacles.length - 1));
+  };
+
   const handleBack = () => {
+    setCurrentObstacleIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+  };
+
+  const handleGoBack = () => {
     router.back(); // Navigate back to the previous page
   };
 
@@ -56,35 +64,45 @@ export default function ObstacleListClient() {
     return <p>Error: {error}</p>;
   }
 
+  const currentObstacle = obstacles[currentObstacleIndex];
+
   return (
     <div className="obstacle-container">
       <h1>Obstacle List for {title}</h1>
-      {obstacles.length > 0 ? (
-        <ul className="obstacle-list">
-          {obstacles.map((obstacle, index) => (
-            <li key={index} className="obstacle-item">
-              <h3>{obstacle.header}</h3>
-              <p>{obstacle.text}</p>
-              <div className="strategies">
-                <div className="strategy">
-                  <h4>{obstacle.st1header}</h4>
-                  <p>{obstacle.st1text}</p>
-                  <p className="impact">{obstacle.st1texta}</p>
-                </div>
-                <div className="strategy">
-                  <h4>{obstacle.st2header}</h4>
-                  <p>{obstacle.st2text}</p>
-                  <p className="impact">{obstacle.st2texta}</p>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+      {currentObstacle ? (
+        <div className="obstacle-item">
+          <h3>{currentObstacle.header}</h3>
+          <p>{currentObstacle.text}</p>
+          <div className="strategies">
+            <div className="strategy">
+              <h4>{currentObstacle.st1header}</h4>
+              <p>{currentObstacle.st1text}</p>
+              <p className="impact">{currentObstacle.st1texta}</p>
+            </div>
+            <div className="strategy">
+              <h4>{currentObstacle.st2header}</h4>
+              <p>{currentObstacle.st2text}</p>
+              <p className="impact">{currentObstacle.st2texta}</p>
+            </div>
+          </div>
+        </div>
       ) : (
-        <p>No obstacles found for this study.</p>
+        <p>No obstacles available.</p>
       )}
-      <button onClick={handleBack} className="back-button">
-        Back
+      <div className="navigation-buttons">
+        <button onClick={handleBack} disabled={currentObstacleIndex === 0} className="nav-button">
+          Back
+        </button>
+        <button
+          onClick={handleNext}
+          disabled={currentObstacleIndex === obstacles.length - 1}
+          className="nav-button"
+        >
+          Next
+        </button>
+      </div>
+      <button onClick={handleGoBack} className="back-button">
+        Go Back to Studies
       </button>
     </div>
   );
