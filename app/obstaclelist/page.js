@@ -1,21 +1,10 @@
-"use client";
+import { Suspense } from "react";
+import ObstacleListClient from "./ObstacleListClient"; // Separate client-side logic into a component
 
-import { useSearchParams } from "next/navigation";
-
-export default function ObstacleList() {
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
-  const title = searchParams.get("title");
-
-  if (!id || !title) {
-    return <p>No study selected. Please go back and select a study.</p>;
-  }
-
+export default function ObstacleListPage() {
   return (
-    <div>
-      <h1>Obstacle List for {title}</h1>
-      <p>Study ID: {id}</p>
-      {/* Fetch and render obstacles or other data related to the selected study */}
-    </div>
+    <Suspense fallback={<p>Loading obstacle list...</p>}>
+      <ObstacleListClient />
+    </Suspense>
   );
 }
