@@ -12,6 +12,7 @@ export default function ObstacleListClient() {
 
   const [obstacles, setObstacles] = useState([]);
   const [currentObstacleIndex, setCurrentObstacleIndex] = useState(0);
+  const [selectedStrategy, setSelectedStrategy] = useState(null); // State for selected strategy
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -21,11 +22,11 @@ export default function ObstacleListClient() {
     const fetchObstacles = async () => {
       try {
         setLoading(true);
-        const res = await fetch("/data.json"); // Fetch data.json from public directory
+        const res = await fetch("/data.json");
         if (!res.ok) throw new Error("Failed to fetch data.");
         const data = await res.json();
 
-        // Find the study by ID and set its obstacles
+        // Find the study and its obstacles
         const study = data.find((study) => study.id === parseInt(id));
         if (!study) throw new Error("Study not found.");
 
@@ -41,15 +42,21 @@ export default function ObstacleListClient() {
   }, [id]);
 
   const handleNext = () => {
+    setSelectedStrategy(null); // Reset strategy selection on Next
     setCurrentObstacleIndex((prevIndex) => Math.min(prevIndex + 1, obstacles.length - 1));
   };
 
   const handleBack = () => {
+    setSelectedStrategy(null); // Reset strategy selection on Back
     setCurrentObstacleIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
   const handleGoBack = () => {
-    router.back(); // Navigate back to the previous page
+    router.back();
+  };
+
+  const handleStrategySelection = (strategy, impactText) => {
+    setSelectedStrategy({ strategy, impactText }); // Update selected strategy and additional text
   };
 
   if (!id || !title) {
@@ -70,25 +77,48 @@ export default function ObstacleListClient() {
     <div className="obstacle-container">
       <h1>Obstacle List for {title}</h1>
       {currentObstacle ? (
-        <div className="obstacle-item">
-          <h3>{currentObstacle.header}</h3>
-          <p>{currentObstacle.text}</p>
-          <div className="strategies">
-            <div className="strategy">
+        <>
+          {/* Obstacle Header and Text */}
+          <div className="obstacle-header">
+            <h2>{currentObstacle.header}</h2>
+            <p>{currentObstacle.text}</p>
+          </div>
+
+          {/* Buttons for Strategies */}
+          <div className="strategy-buttons">
+            <button
+              className={`strategy-button ${
+                selectedStrategy?.strategy === currentObstacle.st1header ? "selected" : ""
+              }`}
+              onClick={() => handleStrategySelection(currentObstacle.st1header, currentObstacle.st1texta)}
+            >
               <h4>{currentObstacle.st1header}</h4>
               <p>{currentObstacle.st1text}</p>
-              <p className="impact">{currentObstacle.st1texta}</p>
-            </div>
-            <div className="strategy">
+            </button>
+            <button
+              className={`strategy-button ${
+                selectedStrategy?.strategy === currentObstacle.st2header ? "selected" : ""
+              }`}
+              onClick={() => handleStrategySelection(currentObstacle.st2header, currentObstacle.st2texta)}
+            >
               <h4>{currentObstacle.st2header}</h4>
               <p>{currentObstacle.st2text}</p>
-              <p className="impact">{currentObstacle.st2texta}</p>
-            </div>
+            </button>
           </div>
-        </div>
+
+          {/* Message for Selected Strategy */}
+          {selectedStrategy && (
+            <div className="selected-strategy-message">
+              <p>You selected: <strong>{selectedStrategy.strategy}</strong></p>
+              <p className="impact-text">{selectedStrategy.impactText}</p>
+            </div>
+          )}
+        </>
       ) : (
         <p>No obstacles available.</p>
       )}
+
+      {/* Navigation Buttons */}
       <div className="navigation-buttons">
         <button onClick={handleBack} disabled={currentObstacleIndex === 0} className="nav-button">
           Back

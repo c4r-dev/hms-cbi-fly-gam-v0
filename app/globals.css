@@ -117,49 +117,80 @@
   text-align: center;
 }
 
-.obstacle-item {
-  margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  text-align: left;
-  background-color: #f9f9f9;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.obstacle-item h3 {
-  margin: 0 0 10px;
-  font-size: 18px;
+/* Obstacle Header and Text */
+.obstacle-header h2 {
+  font-size: 24px;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.obstacle-item p {
-  margin: 5px 0;
-  font-size: 14px;
+.obstacle-header p {
+  font-size: 16px;
   color: #555;
+  margin-bottom: 20px;
 }
 
-.strategies {
+/* Selected Strategy Message */
+.selected-strategy-message {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #007bff;
+}
+
+.selected-strategy-message strong {
+  font-weight: bold;
+  color: #0056b3;
+}
+
+.impact-text {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+  font-style: italic;
+}
+
+/* Strategy Buttons */
+.strategy-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.strategy-button {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 20px;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  background-color: white;
+  color: #007bff;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  text-align: center;
 }
 
-.strategy h4 {
+.strategy-button.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.strategy-button:hover {
+  background-color: #0056b3;
+  color: white;
+  transform: scale(1.05);
+}
+
+.strategy-button h4 {
+  font-size: 18px;
   margin: 0 0 5px;
-  font-size: 16px;
-  font-weight: bold;
 }
 
-.strategy p {
-  margin: 0;
+.strategy-button p {
   font-size: 14px;
-  color: #666;
-}
-
-.strategy .impact {
-  font-style: italic;
-  color: #333;
+  margin: 0;
 }
 
 /* Navigation Buttons */
