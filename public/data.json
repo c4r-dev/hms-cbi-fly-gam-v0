@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "title": "Biomedical Engineering",
+    "description": "A team of biomedical engineers is developing a new medical device for diagnosing a rare genetic disorder. They conduct a clinical trial involving patients with the disorder and healthy controls.",
+    "color": "yellow",
+    "narative": "You helped the biomedical engineering team address masking constraints in their study! You helped ensure transparency, fostered teamwork, and convinced skeptics all in the support of patient welfare. As a result, you helped build a solid foundation for research.",
+    "obstacles": [
+      {
+        "header": "Ownership Issues",
+        "text": "The team lead believes that if other researchers contribute to the experiment, it will lead to ownership or authorship issues. They worry about difficulties in attributing credit for the work conducted.",
+        "st1header": "Collaborative Agreements",
+        "st1text": "Develop clear collaboration agreements. Document how contributions, authorship, and credit will work. Revisit the agreements with the team to clarify or make adjustments.",
+        "st2header": "Shared Credit",
+        "st2text": "Promote a culture of shared credit. Acknowledge all contributors in publications and presentations. Use the Contributor Role Taxonomy to recognize everyone’s role.",
+        "st1texta": "By fostering open communication and creating clear agreements, the team promotes collaborative practices. Regularly revisiting these agreements ensures that the division of work and recognition continue to feel transparent and fair to everyone.",
+        "st2texta": "Acknowledging all contributors promotes fairness. While it might not fully address concerns about credit allocation, contributor statements foster the practice of recognizing each person's contributions."
+      },
+      {
+        "header": "Belief in the Value of Masking",
+        "text": "One of the engineers on the team believes that masking is unnecessary for this type of study. They argue that the diagnostic accuracy of the medical device won’t be affected if subjects are aware of their status.",
+        "st1header": "Literature Review",
+        "st1text": "Conduct a literature review on similar diagnostic device trials. Highlight studies where masking was practiced - is there a standard practice in the community? Present this evidence to the team to demonstrate the importance of masking.",
+        "st2header": "Discuss Performance Bias",
+        "st2text": "Gather the team and review the concept of performance bias. Provide historical examples (e.g N rays) and discuss the possible impacts of unmasked conditions on diagnostic accuracy.",
+        "st1texta": "Highlighting studies which make use of standardized masking approaches can sway the team toward implementing masking. It reinforces the importance of rigorous scientific practices that align with the broader community.",
+        "st2texta": "Discussing the potential outcomes of unmasked conditions demonstrates a commitment to evidence-based decision-making. It encourages a proactive approach to addressing concerns."
+      },
+      {
+        "header": "Welfare Constraint",
+        "text": "The study coordinator expresses concern that if masking is used, it might compromise patient care during the study. They emphasize the importance of balancing scientific rigor with patient well-being.",
+        "st1header": "Ethical Oversight",
+        "st1text": "Review the study protocol with an independent ethics committee or review board. Seek their input on the balance between scientific rigor and patient welfare. Their recommendations can guide the team's decision on masking.",
+        "st2header": "Informed Consent",
+        "st2text": "Clearly communicate the purpose and benefits of masking to patients participating in the study. Obtain informed consent that includes information about procedures. Prioritize patient autonomy and understanding.",
+        "st1texta": "Involving an independent ethics committee ensures patient welfare while maintaining scientific rigor. Their recommendations can provide reassurance and foster trust.",
+        "st2texta": "Prioritizing patient autonomy by clearly explaining masking benefits via informed consent builds a positive relationship with participants. It reflects ethical and respectful conduct."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Neuroscience",
+    "description": "Neuroscientists are investigating the effects of a new drug on memory consolidation. They conduct an experiment with human participants.",
+    "color": "rgb(76, 240, 76)",
+    "narative": "",
+    "obstacles": [
+      {
+        "header": "",
+        "text": "",
+        "st1header": "",
+        "st1text": "",
+        "st2header": "",
+        "st2text": "",
+        "st1texta": "",
+        "st2texta": ""
+      },
+      {
+        "header": "",
+        "text": "",
+        "st1header": "",
+        "st1text": "",
+        "st2header": "",
+        "st2text": "",
+        "st1texta": "",
+        "st2texta": ""},
+      {
+       "header": "",
+        "text": "",
+        "st1header": "",
+        "st1text": "",
+        "st2header": "",
+        "st2text": "",
+        "st1texta": "",
+        "st2texta": ""}
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Pharmacology",
+    "description": "A pharmaceutical company is testing a new drug for a common chronic condition. They conduct a large-scale clinical trial.",
+    "color": "hotpink",
+    "narative": "",
+    "obstacles": [
+      {
+        "header": "",
+        "text": "",
+        "st1header": "",
+        "st1text": "",
+        "st2header": "",
+        "st2text": "",
+        "st1texta": "",
+        "st2texta": ""
+      },
+      {
+        "header": "",
+        "text": "",
+        "st1header": "",
+        "st1text": "",
+        "st2header": "",
+        "st2text": "",
+        "st1texta": "",
+        "st2texta": ""},
+      {
+       "header": "",
+        "text": "",
+        "st1header": "",
+        "st1text": "",
+        "st2header": "",
+        "st2text": "",
+        "st1texta": "",
+        "st2texta": ""}
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Psychology",
+    "description": "A pharmaceutical company is testing a new drug for a common chronic condition. They conduct a large-scale clinical trial.",
+    "color": "#39e1f8",
+    "narative": "",
+    "obstacles": [
+      {
+        "header": "",
+        "text": "",
+        "st1header": "",
+        "st1text": "",
+        "st2header": "",
+        "st2text": "",
+        "st1texta": "",
+        "st2texta": ""
+      },
+      {
+        "header": "",
+        "text": "",
+        "st1header": "",
+        "st1text": "",
+        "st2header": "",
+        "st2text": "",
+        "st1texta": "",
+        "st2texta": ""},
+      {
+       "header": "",
+        "text": "",
+        "st1header": "",
+        "st1text": "",
+        "st2header": "",
+        "st2text": "",
+        "st1texta": "",
+        "st2texta": ""}
+    ]
+  }
+]
