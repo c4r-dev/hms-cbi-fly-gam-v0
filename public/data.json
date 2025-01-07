@@ -124,33 +124,35 @@
     "narative": "",
     "obstacles": [
       {
-        "header": "",
-        "text": "",
-        "st1header": "",
-        "st1text": "",
-        "st2header": "",
-        "st2text": "",
-        "st1texta": "",
-        "st2texta": ""
+        "header": "Tradition",
+        "text": "The lead psychologist wants to follow their standard practice for previous studies. They believe masking is not necessary, because they have never needed it before.",
+        "st1header": "Gradual Transition",
+        "st1text": "Gradually introduce masking practices in this team. Start with partial masking (e.g., group assignment is hidden when assessing stress) and demonstrate its practicality.",
+        "st2header": "Challenge Norms with Evidence",
+        "st2text": "Counter cultural norms with evidence. Share research articles or case studies that highlight successful masking in psychology experiments.",
+        "st1texta": "By gradually introducing masking practices, the team respects existing norms. Demonstrating the benefits of partial masking can pave the way for further change.",
+        "st2texta": "Engaging in evidence-based discussions challenges prevailing norms. Sharing research articles or case studies can shift perspectives and promote openness to masking."
       },
       {
-        "header": "",
-        "text": "",
-        "st1header": "",
-        "st1text": "",
-        "st2header": "",
-        "st2text": "",
-        "st1texta": "",
-        "st2texta": ""},
+        "header": "Fear of Errors",
+        "text": "The junior researcher expresses fear that masking could introduce errors or bias into the study. They worry that masking the participants might affect their engagement with the mindfulness intervention.",
+        "st1header": "Pilot Testing and Training",
+        "st1text": "Conduct pilot testing to identify issues related to masking. Train team members on error prevention techniques (e.g., double-checking procedures, clear documentation). Build confidence in the process.",
+        "st2header": "Transparent Communication",
+        "st2text": "Create a feedback system where team members can report concerns without fear of judgment. Encourage communication about errors or doubts related to masking.",
+        "st1texta": "Conducting pilot testing minimizes errors. Training team members on error prevention techniques builds confidence. Addressing fears head-on ensures a more accurate study.",
+        "st2texta": "Creating an environment for open communication encourages reporting of concerns. Allowing the sharing of concerns and addressing them without judgment fosters trust."
+      },
       {
-       "header": "",
-        "text": "",
-        "st1header": "",
-        "st1text": "",
-        "st2header": "",
-        "st2text": "",
-        "st1texta": "",
-        "st2texta": ""}
+       "header": "Practical Constraint",
+        "text": "Given the weekly session format, the team decides to implement partial masking. They recognize the need to balance practical considerations with scientific rigor.",
+        "st1header": "Partial Masking with Outcome Assessors",
+        "st1text": "This form of partial masking means that the people who measure study outcomes (e.g., stress levels, mindfulness scores) would not know whether participants belong to the intervention group or the control group. Outcome assessors can remain unbiased, even if participants attend sessions regularly.",
+        "st2header": "Sham Procedure",
+        "st2text": "Because participants will be aware of what treatment they receive, a missing mindfulness intervention is not possible. Instead, the control group receives a sham intervention that is known (from previous studies) to have little to no effect.",
+        "st1texta": "Partial masking maintains scientific rigor. Participants will know what intervention they receive, but this practice reduces bias in the outcome measures. This compromise balances practicality and validity.",
+        "st2texta": "A sham procedure hides from participants which intervention is actually being tested. This allows comparison of the new treatment against a known placebo."
+      }
     ]
   }
 ]
