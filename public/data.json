@@ -56,14 +56,15 @@
         "st2texta": "Partnering with statisticians ensures robust masking methods. Their guidance not only enhances the study but also promotes interdisciplinary collaboration."
       },
       {
-        "header": "",
-        "text": "",
-        "st1header": "",
-        "st1text": "",
-        "st2header": "",
-        "st2text": "",
-        "st1texta": "",
-        "st2texta": ""},
+        "header": "Resource Constraint",
+        "text": "Due to limited personnel qualified to run the experiment, the team is considering partial masking.",
+        "st1header": "Collaborative Research",
+        "st1text": "Collaborate with other research groups or institutions. Share resources (e.g., personnel, equipment) to enable effective masking.",
+        "st2header": "Prioritize Key Measures",
+        "st2text": "Identify critical outcome measures that require masking. Allocate resources to mask the rat treatment group during data analysis.",
+        "st1texta": "Collaborating with other research groups pools resources together to be more efficient. This collective effort can lead to benefits for everyone and strengthen the scientific community.",
+        "st2texta": "Allocating resources specifically for critical outcome measures avoids some avenues for bias. It acknowledges resource limitations."
+      },
       {
        "header": "",
         "text": "",
