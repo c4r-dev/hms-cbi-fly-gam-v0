@@ -66,14 +66,15 @@
         "st2texta": "Allocating resources specifically for critical outcome measures avoids some avenues for bias. It acknowledges resource limitations."
       },
       {
-       "header": "",
-        "text": "",
-        "st1header": "",
-        "st1text": "",
-        "st2header": "",
-        "st2text": "",
-        "st1texta": "",
-        "st2texta": ""}
+       "header": "Fear of Errors",
+        "text": "The lead researcher worries that masking could result in giving incorrect dosages of the supplement. They worry that errors will create bottlenecks for an already tight turnaround time.",
+        "st1header": "Double-Check Procedures and Data Entry",
+        "st1text": "Implement regular checks of experimental procedures and data entry. Assign different team members to do independent checks. Use best practices in data masking to avoid errors.",
+        "st2header": "Conduct Tests to Refine Masking",
+        "st2text": "Before testing with actual animals, simulate experiments to identify challenges and potential sources of error. Refine masking procedures to reduce error, based on feedback.",
+        "st1texta": "While it requires additional time and effort, regular verification minimizes errors. Automated validation scripts can catch inconsistencies and the team’s commitment to accuracy ensures reliable results.",
+        "st2texta": "Simulated experiments help identify pitfalls and pave the way for improvements, without expending valuable experimental resources. This approach to refinement is a flexible way to navigate challenges effectively."
+      }
     ]
   },
   {
