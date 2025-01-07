@@ -41,7 +41,7 @@ export default function Home() {
           alt="Favicon"
           className="favicon"
         />
-        <h1 className="title">Weight choices to mask a study</h1>
+        <h1 className="title">Weigh choices to mask a study</h1>
       </div>
 
       {/* Centered Title */}
