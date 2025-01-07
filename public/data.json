@@ -46,14 +46,14 @@
     "narative": "",
     "obstacles": [
       {
-        "header": "",
-        "text": "",
-        "st1header": "",
-        "st1text": "",
-        "st2header": "",
-        "st2text": "",
-        "st1texta": "",
-        "st2texta": ""
+        "header": "Knowledge Constraint",
+        "text": "The lead researcher acknowledges that there is a lack of knowledge about masking and its implementation. They want to seek guidance from experts or collaborate with statisticians to address this constraint.",
+        "st1header": "Training and Workshops",
+        "st1text": "Organize workshops or training sessions on masking techniques. Invite experts to educate the team on practical implementation. Share resources (e.g., manuals, online courses) to enhance knowledge.",
+        "st2header": "Collaborate with Statisticians",
+        "st2text": "Invite statisticians or data analysts who specialize in experimental design to join the team. Seek their guidance on effective masking methods. Collaborate closely to ensure proper implementation.",
+        "st1texta": "Educating the team on masking techniques can empower them with practical knowledge. This collaborative approach fosters a sense of shared responsibility and expertise.",
+        "st2texta": "Partnering with statisticians ensures robust masking methods. Their guidance not only enhances the study but also promotes interdisciplinary collaboration."
       },
       {
         "header": "",
