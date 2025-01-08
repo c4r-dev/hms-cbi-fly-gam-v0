@@ -76,7 +76,7 @@ export default function ObstacleListClient() {
 
   return (
     <div className="obstacle-container">
-      <h1>Obstacle List for {title}</h1>
+      <h1 style={{ marginTop: "35px" }}>Obstacle List for {title}</h1>
       {currentObstacle ? (
         <>
           <div className="obstacle-header">
@@ -122,7 +122,7 @@ export default function ObstacleListClient() {
         </button>
         <button
           onClick={handleNext}
-          disabled={currentObstacleIndex === obstacles.length - 1}
+          disabled={!selectedStrategy || currentObstacleIndex === obstacles.length - 1}
           className="nav-button"
         >
           Next
