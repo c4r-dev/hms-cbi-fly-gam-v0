@@ -12,7 +12,7 @@ export default function ObstacleListClient() {
 
   const [obstacles, setObstacles] = useState([]);
   const [currentObstacleIndex, setCurrentObstacleIndex] = useState(0);
-  const [selectedStrategy, setSelectedStrategy] = useState(null); // State for selected strategy
+  const [selections, setSelections] = useState({}); // State for saving selections
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -26,7 +26,6 @@ export default function ObstacleListClient() {
         if (!res.ok) throw new Error("Failed to fetch data.");
         const data = await res.json();
 
-        // Find the study and its obstacles
         const study = data.find((study) => study.id === parseInt(id));
         if (!study) throw new Error("Study not found.");
 
@@ -42,12 +41,10 @@ export default function ObstacleListClient() {
   }, [id]);
 
   const handleNext = () => {
-    setSelectedStrategy(null); // Reset strategy selection on Next
     setCurrentObstacleIndex((prevIndex) => Math.min(prevIndex + 1, obstacles.length - 1));
   };
 
   const handleBack = () => {
-    setSelectedStrategy(null); // Reset strategy selection on Back
     setCurrentObstacleIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
@@ -56,7 +53,10 @@ export default function ObstacleListClient() {
   };
 
   const handleStrategySelection = (strategy, impactText) => {
-    setSelectedStrategy({ strategy, impactText }); // Update selected strategy and additional text
+    setSelections((prevSelections) => ({
+      ...prevSelections,
+      [currentObstacleIndex]: { strategy, impactText },
+    }));
   };
 
   if (!id || !title) {
@@ -72,19 +72,18 @@ export default function ObstacleListClient() {
   }
 
   const currentObstacle = obstacles[currentObstacleIndex];
+  const selectedStrategy = selections[currentObstacleIndex];
 
   return (
     <div className="obstacle-container">
       <h1>Obstacle List for {title}</h1>
       {currentObstacle ? (
         <>
-          {/* Obstacle Header and Text */}
           <div className="obstacle-header">
             <h2>{currentObstacle.header}</h2>
             <p>{currentObstacle.text}</p>
           </div>
 
-          {/* Buttons for Strategies */}
           <div className="strategy-buttons">
             <button
               className={`strategy-button ${
@@ -106,7 +105,6 @@ export default function ObstacleListClient() {
             </button>
           </div>
 
-          {/* Message for Selected Strategy */}
           {selectedStrategy && (
             <div className="selected-strategy-message">
               <p>You selected: <strong>{selectedStrategy.strategy}</strong></p>
@@ -118,7 +116,6 @@ export default function ObstacleListClient() {
         <p>No obstacles available.</p>
       )}
 
-      {/* Navigation Buttons */}
       <div className="navigation-buttons">
         <button onClick={handleBack} disabled={currentObstacleIndex === 0} className="nav-button">
           Back
