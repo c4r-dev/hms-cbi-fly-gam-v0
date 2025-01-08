@@ -50,7 +50,7 @@ export default function ObstacleListClient() {
   };
 
   const handleGoBack = () => {
-    router.back();
+    router.back();  
   };
 
   const handleStrategySelection = (strategy, impactText) => {
