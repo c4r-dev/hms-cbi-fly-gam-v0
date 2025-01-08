@@ -15,7 +15,7 @@ export default function ObstacleListClient() {
   const [selections, setSelections] = useState({}); // State for saving selections
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isSaving, setIsSaving] = useState(false); // Saving state for Save button
+  const [isSaving, setIsSaving] = useState(false); // Saving state for Submit button
 
   useEffect(() => {
     if (!id) return;
@@ -50,7 +50,7 @@ export default function ObstacleListClient() {
   };
 
   const handleGoBack = () => {
-    router.back();  
+    router.back();
   };
 
   const handleStrategySelection = (strategy, impactText) => {
@@ -60,7 +60,7 @@ export default function ObstacleListClient() {
     }));
   };
 
-  const handleSaveSelections = async () => {
+  const handleSubmit = async () => {
     try {
       setIsSaving(true);
       const response = await fetch("/api/save-selections", {
@@ -79,10 +79,10 @@ export default function ObstacleListClient() {
 
       const data = await response.json();
       console.log("Selections saved:", data);
-      alert("Selections saved successfully!");
+      alert("Selections submitted successfully!");
     } catch (error) {
       console.error(error);
-      alert("Error saving selections: " + error.message);
+      alert("Error submitting selections: " + error.message);
     } finally {
       setIsSaving(false);
     }
@@ -102,6 +102,7 @@ export default function ObstacleListClient() {
 
   const currentObstacle = obstacles[currentObstacleIndex];
   const selectedStrategy = selections[currentObstacleIndex];
+  const allSelected = Object.keys(selections).length === obstacles.length; // Check if all obstacles are selected
 
   return (
     <div className="obstacle-container">
@@ -149,16 +150,20 @@ export default function ObstacleListClient() {
         <button onClick={handleBack} disabled={currentObstacleIndex === 0} className="nav-button">
           Back
         </button>
-        <button
-          onClick={handleNext}
-          disabled={!selectedStrategy || currentObstacleIndex === obstacles.length - 1}
-          className="nav-button"
-        >
-          Next
-        </button>
-        <button onClick={handleSaveSelections} disabled={isSaving} className="save-button">
-          {isSaving ? "Saving..." : "Save Selections"}
-        </button>
+        {!allSelected && (
+          <button
+            onClick={handleNext}
+            disabled={!selectedStrategy || currentObstacleIndex === obstacles.length - 1}
+            className="nav-button"
+          >
+            Next
+          </button>
+        )}
+        {allSelected && (
+          <button onClick={handleSubmit} disabled={isSaving} className="nav-button">
+            {isSaving ? "Submitting..." : "Submit"}
+          </button>
+        )}
       </div>
       <button onClick={handleGoBack} className="back-button">
         Go Back to Studies
