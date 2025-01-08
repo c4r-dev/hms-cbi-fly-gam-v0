@@ -43,7 +43,7 @@
     "title": "Neuroscience",
     "description": "Neuroscientists are investigating the effects of a new drug on memory consolidation. They conduct an experiment with human participants.",
     "color": "rgb(76, 240, 76)",
-    "narative": "",
+    "narative": "You helped the team of neuroscientists contend with masking constraints during their memory consolidation study! You supported designing protocols, ensuring proper procedures, and maintaining data integrity. As a result, you paved the way for insights into memory mechanisms.",
     "obstacles": [
       {
         "header": "Knowledge Constraint",
@@ -82,7 +82,7 @@
     "title": "Pharmacology",
     "description": "A pharmaceutical company is testing a new drug for a common chronic condition. They conduct a large-scale clinical trial.",
     "color": "hotpink",
-    "narative": "",
+    "narative": "You committed to masking protocols and worked to ensure reliable results! You supported planning, documentation, and transparent communication. As a result, patients will benefit from evidence-based treatments.",
     "obstacles": [
       {
         "header": "Operational Constraints",
@@ -121,7 +121,7 @@
     "title": "Psychology",
     "description": "A pharmaceutical company is testing a new drug for a common chronic condition. They conduct a large-scale clinical trial.",
     "color": "#39e1f8",
-    "narative": "",
+    "narative": "You helped implement masking strategies during the mindfulness intervention study! Your attention to detail, consistent monitoring, and collaboration with participants fostered an environment of trust. As a result, the study’s outcomes will contribute to enhancing mental well-being.",
     "obstacles": [
       {
         "header": "Tradition",

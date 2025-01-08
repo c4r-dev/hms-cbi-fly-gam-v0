@@ -79,10 +79,10 @@ export default function ObstacleListClient() {
 
       const data = await response.json();
       console.log("Selections saved:", data);
-      alert("Selections submitted successfully!");
+      // alert("Selections submitted successfully!");
     } catch (error) {
       console.error(error);
-      alert("Error submitting selections: " + error.message);
+      // alert("Error submitting selections: " + error.message);
     } finally {
       setIsSaving(false);
     }
