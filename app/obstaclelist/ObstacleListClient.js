@@ -15,6 +15,7 @@ export default function ObstacleListClient() {
   const [selections, setSelections] = useState({}); // State for saving selections
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isSaving, setIsSaving] = useState(false); // Saving state for Save button
 
   useEffect(() => {
     if (!id) return;
@@ -57,6 +58,34 @@ export default function ObstacleListClient() {
       ...prevSelections,
       [currentObstacleIndex]: { strategy, impactText },
     }));
+  };
+
+  const handleSaveSelections = async () => {
+    try {
+      setIsSaving(true);
+      const response = await fetch("/api/save-selections", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          studyId: id,
+          title,
+          selections,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save selections");
+      }
+
+      const data = await response.json();
+      console.log("Selections saved:", data);
+      alert("Selections saved successfully!");
+    } catch (error) {
+      console.error(error);
+      alert("Error saving selections: " + error.message);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   if (!id || !title) {
@@ -126,6 +155,9 @@ export default function ObstacleListClient() {
           className="nav-button"
         >
           Next
+        </button>
+        <button onClick={handleSaveSelections} disabled={isSaving} className="save-button">
+          {isSaving ? "Saving..." : "Save Selections"}
         </button>
       </div>
       <button onClick={handleGoBack} className="back-button">
