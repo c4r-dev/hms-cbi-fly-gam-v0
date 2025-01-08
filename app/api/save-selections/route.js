@@ -12,6 +12,9 @@ export async function POST(req) {
     const result = await collection.insertOne({
       studyId,
       title,
+      description,
+      narative,
+      obstacles,
       selections,
       createdAt: new Date(),
     });

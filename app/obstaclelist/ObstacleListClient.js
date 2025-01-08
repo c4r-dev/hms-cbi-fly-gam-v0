@@ -69,6 +69,9 @@ export default function ObstacleListClient() {
         body: JSON.stringify({
           studyId: id,
           title,
+          description,
+          narative,
+          obstacles,
           selections,
         }),
       });
