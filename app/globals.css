@@ -1,3 +1,11 @@
+/* Global Font Setting */
+body {
+  font-family: 'GeneralSans', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* General Container */
 .container {
   max-width: 100%;
@@ -52,7 +60,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 185px;
+  height: 235px;
   width: 238px;
   padding: 20px;
   border: 1px solid #ddd;
@@ -81,7 +89,7 @@
 
 .detailedBox p {
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
   color: #666;
 }
 
