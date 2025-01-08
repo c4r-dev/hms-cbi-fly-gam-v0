@@ -6,8 +6,8 @@ export async function POST(req) {
     const { studyId, title, selections } = body;
 
     const client = await clientPromise;
-    const db = client.db("flyinggame"); // Replace with your database name
-    const collection = db.collection("c4r"); // Replace with your collection name
+    const db = client.db("c4r"); // Replace with your database name
+    const collection = db.collection("flyinggame"); // Replace with your collection name
 
     const result = await collection.insertOne({
       studyId,
