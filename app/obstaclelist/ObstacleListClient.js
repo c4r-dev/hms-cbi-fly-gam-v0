@@ -156,7 +156,7 @@ export default function ObstacleListClient() {
         <button onClick={handleBack} disabled={currentObstacleIndex === 0} className="nav-button">
           Back
         </button>
-        {!allSelected && (
+        {/* {!allSelected && ( */}
           <button
             onClick={handleNext}
             disabled={!selectedStrategy || currentObstacleIndex === obstacles.length - 1}
@@ -164,7 +164,7 @@ export default function ObstacleListClient() {
           >
             Next
           </button>
-        )}
+        {/* )} */}
         {allSelected && (
           <button onClick={handleSubmit} disabled={isSaving} className="nav-button">
             {isSaving ? "Submitting..." : "Submit"}
