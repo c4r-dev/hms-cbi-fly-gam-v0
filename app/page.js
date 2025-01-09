@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation"; // App Router's navigation hook
-import "./globals.css"; // Ensure global styles are loaded
+import "../styles/globals.css"; // Ensure global styles are loaded
 
 export default function Home() {
   const [studies, setStudies] = useState([]);
