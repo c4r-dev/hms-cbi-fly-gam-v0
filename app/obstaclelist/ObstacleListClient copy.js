@@ -11,7 +11,7 @@ export default function ObstacleListClient() {
   const title = searchParams.get("title");
   const description = searchParams.get("description");
   const narative = searchParams.get("narative");
-
+  
 
   const [obstacles, setObstacles] = useState([]);
   const [currentObstacleIndex, setCurrentObstacleIndex] = useState(0);
@@ -85,21 +85,10 @@ export default function ObstacleListClient() {
 
       const data = await response.json();
       console.log("Selections saved:", data);
-
-      // Navigate to obstacledisplay
-      router.push({
-        pathname: "/obstacledisplay", // Ensure this matches the folder name
-        query: {
-          id: id,
-          title: title,
-          description: description,
-          narative: narative,
-          obstacles: JSON.stringify(obstacles),
-          selections: JSON.stringify(selections),
-        },
-      });
+      // alert("Selections submitted successfully!");
     } catch (error) {
       console.error(error);
+      // alert("Error submitting selections: " + error.message);
     } finally {
       setIsSaving(false);
     }
@@ -133,16 +122,18 @@ export default function ObstacleListClient() {
 
           <div className="strategy-buttons">
             <button
-              className={`strategy-button ${selectedStrategy?.strategy === currentObstacle.st1header ? "selected" : ""
-                }`}
+              className={`strategy-button ${
+                selectedStrategy?.strategy === currentObstacle.st1header ? "selected" : ""
+              }`}
               onClick={() => handleStrategySelection(currentObstacle.st1header, currentObstacle.st1texta)}
             >
               <h4>{currentObstacle.st1header}</h4>
               <p>{currentObstacle.st1text}</p>
             </button>
             <button
-              className={`strategy-button ${selectedStrategy?.strategy === currentObstacle.st2header ? "selected" : ""
-                }`}
+              className={`strategy-button ${
+                selectedStrategy?.strategy === currentObstacle.st2header ? "selected" : ""
+              }`}
               onClick={() => handleStrategySelection(currentObstacle.st2header, currentObstacle.st2texta)}
             >
               <h4>{currentObstacle.st2header}</h4>
@@ -166,13 +157,13 @@ export default function ObstacleListClient() {
           Back
         </button>
         {/* {!allSelected && ( */}
-        <button
-          onClick={handleNext}
-          disabled={!selectedStrategy || currentObstacleIndex === obstacles.length - 1}
-          className="nav-button"
-        >
-          Next
-        </button>
+          <button
+            onClick={handleNext}
+            disabled={!selectedStrategy || currentObstacleIndex === obstacles.length - 1}
+            className="nav-button"
+          >
+            Next
+          </button>
         {/* )} */}
         {allSelected && (
           <button onClick={handleSubmit} disabled={isSaving} className="nav-button">
