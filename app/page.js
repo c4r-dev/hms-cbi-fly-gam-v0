@@ -26,7 +26,7 @@ export default function Home() {
   const handleContinue = () => {
     if (selectedStudy) {
       // Navigate to the ObstacleList page with the study ID and title
-      router.push(`/obstaclelist?id=${selectedStudy.id}&title=${selectedStudy.title}`);
+      router.push(`/obstaclelist?id=${selectedStudy.id}&title=${selectedStudy.title}&description=${selectedStudy.description}&narative=${selectedStudy.narative}`);
     } else {
       alert("Please select a study first.");
     }
