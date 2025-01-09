@@ -133,7 +133,7 @@ body {
 }
 
 .obstacle-header p {
-  font-size: 16px;
+  font-size: 20px;
   color: #555;
   margin-bottom: 20px;
 }
@@ -141,7 +141,7 @@ body {
 /* Selected Strategy Message */
 .selected-strategy-message {
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 20px;
   color: #007bff;
 }
 
@@ -152,7 +152,7 @@ body {
 
 .impact-text {
   margin-top: 10px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   color: #333;
   font-style: italic;
