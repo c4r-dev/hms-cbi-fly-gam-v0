@@ -9,6 +9,9 @@ export default function ObstacleListClient() {
 
   const id = searchParams.get("id");
   const title = searchParams.get("title");
+  const description = searchParams.get("description");
+  const narative = searchParams.get("narative");
+  
 
   const [obstacles, setObstacles] = useState([]);
   const [currentObstacleIndex, setCurrentObstacleIndex] = useState(0);
