@@ -15,8 +15,7 @@ export default function ObstacleDisplayClient() {
   return (
     <div className="obstacle-container">
       <h1>Obstacle Display</h1>
-      <p><strong>ID:</strong> {id}</p>
-      <p><strong>Title:</strong> {title}</p>
+      <p><strong>Research Interest:</strong> {title}</p>
       <p><strong>Description:</strong> {description}</p>
       <p><strong>Narrative:</strong> {narative}</p>
 
