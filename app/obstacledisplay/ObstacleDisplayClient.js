@@ -1,39 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
-export default function ObstacleDisplayClient({ searchParams }) {
-  const [data, setData] = useState(null);
+export default function ObstacleDisplayClient() {
+  const searchParams = useSearchParams();
 
-  useEffect(() => {
-    // Parse the data from query parameters
-    const parsedData = {
-      id: searchParams.id || null,
-      title: searchParams.title || null,
-      description: searchParams.description || null,
-      narative: searchParams.narative || null,
-      obstacles: searchParams.obstacles ? JSON.parse(searchParams.obstacles) : [],
-      selections: searchParams.selections ? JSON.parse(searchParams.selections) : {},
-    };
-    setData(parsedData);
-  }, [searchParams]);
-
-  if (!data) {
-    return <p>Loading data...</p>;
-  }
+  const id = searchParams.get("id");
+  const title = searchParams.get("title");
+  const description = searchParams.get("description");
+  const narative = searchParams.get("narative");
+  const obstacles = JSON.parse(searchParams.get("obstacles") || "[]");
+  const selections = JSON.parse(searchParams.get("selections") || "{}");
 
   return (
     <div className="obstacle-display-container">
       <h1>Obstacle Display</h1>
-      <p><strong>ID:</strong> {data.id}</p>
-      <p><strong>Title:</strong> {data.title}</p>
-      <p><strong>Description:</strong> {data.description}</p>
-      <p><strong>Narrative:</strong> {data.narative}</p>
+      <p><strong>ID:</strong> {id}</p>
+      <p><strong>Title:</strong> {title}</p>
+      <p><strong>Description:</strong> {description}</p>
+      <p><strong>Narrative:</strong> {narative}</p>
 
       <h2>Obstacles</h2>
-      {data.obstacles.length > 0 ? (
+      {obstacles.length > 0 ? (
         <ul>
-          {data.obstacles.map((obstacle, index) => (
+          {obstacles.map((obstacle, index) => (
             <li key={index}>
               <p><strong>Header:</strong> {obstacle.header}</p>
               <p><strong>Text:</strong> {obstacle.text}</p>
@@ -45,9 +35,9 @@ export default function ObstacleDisplayClient({ searchParams }) {
       )}
 
       <h2>Selections</h2>
-      {Object.keys(data.selections).length > 0 ? (
+      {Object.keys(selections).length > 0 ? (
         <ul>
-          {Object.entries(data.selections).map(([index, selection]) => (
+          {Object.entries(selections).map(([index, selection]) => (
             <li key={index}>
               <p><strong>Obstacle {index}:</strong></p>
               <p><strong>Strategy:</strong> {selection.strategy}</p>

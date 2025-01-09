@@ -12,13 +12,12 @@ export default function ObstacleListClient() {
   const description = searchParams.get("description");
   const narative = searchParams.get("narative");
 
-
   const [obstacles, setObstacles] = useState([]);
   const [currentObstacleIndex, setCurrentObstacleIndex] = useState(0);
-  const [selections, setSelections] = useState({}); // State for saving selections
+  const [selections, setSelections] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isSaving, setIsSaving] = useState(false); // Saving state for Submit button
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     if (!id) return;
@@ -66,6 +65,7 @@ export default function ObstacleListClient() {
   const handleSubmit = async () => {
     try {
       setIsSaving(true);
+
       const response = await fetch("/api/save-selections", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -86,18 +86,17 @@ export default function ObstacleListClient() {
       const data = await response.json();
       console.log("Selections saved:", data);
 
-      // Navigate to obstacledisplay
-      router.push({
-        pathname: "/obstacledisplay", // Ensure this matches the folder name
-        query: {
-          id: id,
-          title: title,
-          description: description,
-          narative: narative,
-          obstacles: JSON.stringify(obstacles),
-          selections: JSON.stringify(selections),
-        },
-      });
+      // Construct query string and navigate to obstacledisplay
+      const queryParams = new URLSearchParams({
+        id,
+        title,
+        description,
+        narative,
+        obstacles: JSON.stringify(obstacles),
+        selections: JSON.stringify(selections),
+      }).toString();
+
+      router.push(`/obstacledisplay?${queryParams}`);
     } catch (error) {
       console.error(error);
     } finally {
@@ -119,7 +118,7 @@ export default function ObstacleListClient() {
 
   const currentObstacle = obstacles[currentObstacleIndex];
   const selectedStrategy = selections[currentObstacleIndex];
-  const allSelected = Object.keys(selections).length === obstacles.length; // Check if all obstacles are selected
+  const allSelected = Object.keys(selections).length === obstacles.length;
 
   return (
     <div className="obstacle-container">
@@ -133,16 +132,18 @@ export default function ObstacleListClient() {
 
           <div className="strategy-buttons">
             <button
-              className={`strategy-button ${selectedStrategy?.strategy === currentObstacle.st1header ? "selected" : ""
-                }`}
+              className={`strategy-button ${
+                selectedStrategy?.strategy === currentObstacle.st1header ? "selected" : ""
+              }`}
               onClick={() => handleStrategySelection(currentObstacle.st1header, currentObstacle.st1texta)}
             >
               <h4>{currentObstacle.st1header}</h4>
               <p>{currentObstacle.st1text}</p>
             </button>
             <button
-              className={`strategy-button ${selectedStrategy?.strategy === currentObstacle.st2header ? "selected" : ""
-                }`}
+              className={`strategy-button ${
+                selectedStrategy?.strategy === currentObstacle.st2header ? "selected" : ""
+              }`}
               onClick={() => handleStrategySelection(currentObstacle.st2header, currentObstacle.st2texta)}
             >
               <h4>{currentObstacle.st2header}</h4>
@@ -152,7 +153,9 @@ export default function ObstacleListClient() {
 
           {selectedStrategy && (
             <div className="selected-strategy-message">
-              <p>You selected: <strong>{selectedStrategy.strategy}</strong></p>
+              <p>
+                You selected: <strong>{selectedStrategy.strategy}</strong>
+              </p>
               <p className="impact-text">{selectedStrategy.impactText}</p>
             </div>
           )}
@@ -165,7 +168,6 @@ export default function ObstacleListClient() {
         <button onClick={handleBack} disabled={currentObstacleIndex === 0} className="nav-button">
           Back
         </button>
-        {/* {!allSelected && ( */}
         <button
           onClick={handleNext}
           disabled={!selectedStrategy || currentObstacleIndex === obstacles.length - 1}
@@ -173,7 +175,6 @@ export default function ObstacleListClient() {
         >
           Next
         </button>
-        {/* )} */}
         {allSelected && (
           <button onClick={handleSubmit} disabled={isSaving} className="nav-button">
             {isSaving ? "Submitting..." : "Submit"}
