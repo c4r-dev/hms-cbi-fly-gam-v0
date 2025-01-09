@@ -13,7 +13,7 @@ export default function ObstacleDisplayClient() {
   const selections = JSON.parse(searchParams.get("selections") || "{}");
 
   return (
-    <div className="obstacle-display-container">
+    <div className="obstacle-container">
       <h1>Obstacle Display</h1>
       <p><strong>ID:</strong> {id}</p>
       <p><strong>Title:</strong> {title}</p>
