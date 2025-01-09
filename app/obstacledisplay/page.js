@@ -1,8 +1,8 @@
 "use client";
 
-import ObstacleDisplayClient from "./ObstacleDisplayClient";
+import ObstacleDisplayClient from "ObstacleDisplayClient";
 
-export default function ObstacleDisplayPage({ searchParams }) {
+export default function ObstacleDisplayClient({ searchParams }) {
   return (
     <div>
       <ObstacleDisplayClient searchParams={searchParams} />
