@@ -121,7 +121,7 @@ body {
 .obstacle-container {
   max-width: 800px;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 12px;
   padding: 20px;
   text-align: center;
 }
@@ -262,19 +262,20 @@ body {
 /* Table for Obstacles */
 .obstacle-table {
   margin-bottom: 20px;
-  border: 1px solid #ddd;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
+  table-layout: fixed; /* Ensures equal width for columns */
 }
 
 th, td {
-  border: 1px solid #ddd;
   padding: 10px;
   text-align: left;
+  width: 33.33%; /* Equal width for all columns */
+  word-wrap: break-word; /* Ensures text doesn't overflow */
 }
 
 th {
@@ -282,6 +283,12 @@ th {
   font-weight: bold;
 }
 
-td {
+/* td {
   vertical-align: top;
+} */
+
+/* Highlighted Table Cell */
+.highlight {
+  font-weight: bold;
+  background-color: rgb(239, 197, 239)
 }

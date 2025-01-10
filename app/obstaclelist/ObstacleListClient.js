@@ -47,14 +47,6 @@ export default function ObstacleListClient() {
     setCurrentObstacleIndex((prevIndex) => Math.min(prevIndex + 1, study.obstacles.length - 1));
   };
 
-  const handleBack = () => {
-    setCurrentObstacleIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-  };
-
-  const handleGoBack = () => {
-    router.back();
-  };
-
   const handleStrategySelection = (strategy, impactText) => {
     setSelections((prevSelections) => ({
       ...prevSelections,
@@ -82,9 +74,8 @@ export default function ObstacleListClient() {
       const data = await response.json();
       console.log("Selections saved:", data);
 
-      // Construct query string and navigate to obstacledisplay
       const queryParams = new URLSearchParams({
-        study: JSON.stringify(study), // Pass the study object
+        study: JSON.stringify(study),
         selections: JSON.stringify(selections),
       }).toString();
 
@@ -157,9 +148,6 @@ export default function ObstacleListClient() {
       )}
 
       <div className="navigation-buttons">
-        <button onClick={handleBack} disabled={currentObstacleIndex === 0} className="nav-button">
-          Back
-        </button>
         <button
           onClick={handleNext}
           disabled={!selectedStrategy || currentObstacleIndex === study.obstacles.length - 1}
@@ -173,7 +161,7 @@ export default function ObstacleListClient() {
           </button>
         )}
       </div>
-      <button onClick={handleGoBack} className="back-button">
+      <button onClick={() => router.back()} className="back-button">
         Go Back to Studies
       </button>
     </div>

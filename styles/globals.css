@@ -222,8 +222,7 @@ body {
 }
 
 .nav-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+  display: none; /* Completely hides the Back button when disabled */
 }
 
 .nav-button:hover:not(:disabled) {
@@ -283,12 +282,12 @@ th {
   font-weight: bold;
 }
 
-/* td {
+td {
   vertical-align: top;
-} */
+}
 
 /* Highlighted Table Cell */
 .highlight {
   font-weight: bold;
-  background-color: rgb(239, 197, 239)
+  background-color: rgb(239, 197, 239);
 }
