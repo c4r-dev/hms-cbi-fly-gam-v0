@@ -15,6 +15,7 @@ export default function ObstacleListClient() {
   const [study, setStudy] = useState(null);
   const [currentObstacleIndex, setCurrentObstacleIndex] = useState(0);
   const [selections, setSelections] = useState({});
+  const [lockedAnswers, setLockedAnswers] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
@@ -48,9 +49,18 @@ export default function ObstacleListClient() {
   };
 
   const handleStrategySelection = (strategy, impactText) => {
+    if (lockedAnswers[currentObstacleIndex]) return; // Prevent changes after locking
+
     setSelections((prevSelections) => ({
       ...prevSelections,
       [currentObstacleIndex]: { strategy, impactText },
+    }));
+  };
+
+  const handleLockAnswer = () => {
+    setLockedAnswers((prevLocked) => ({
+      ...prevLocked,
+      [currentObstacleIndex]: true,
     }));
   };
 
@@ -101,6 +111,8 @@ export default function ObstacleListClient() {
 
   const currentObstacle = study.obstacles[currentObstacleIndex];
   const selectedStrategy = selections[currentObstacleIndex];
+  const isLocked = lockedAnswers[currentObstacleIndex];
+  const isLastObstacle = currentObstacleIndex === study.obstacles.length - 1;
   const allSelected = Object.keys(selections).length === study.obstacles.length;
 
   return (
@@ -117,8 +129,9 @@ export default function ObstacleListClient() {
             <button
               className={`strategy-button ${
                 selectedStrategy?.strategy === currentObstacle.st1header ? "selected" : ""
-              }`}
+              } ${isLocked ? "disabled-hover" : ""}`}
               onClick={() => handleStrategySelection(currentObstacle.st1header, currentObstacle.st1texta)}
+              disabled={isLocked} // Disable button if answer is locked
             >
               <h4>{currentObstacle.st1header}</h4>
               <p>{currentObstacle.st1text}</p>
@@ -126,15 +139,22 @@ export default function ObstacleListClient() {
             <button
               className={`strategy-button ${
                 selectedStrategy?.strategy === currentObstacle.st2header ? "selected" : ""
-              }`}
+              } ${isLocked ? "disabled-hover" : ""}`}
               onClick={() => handleStrategySelection(currentObstacle.st2header, currentObstacle.st2texta)}
+              disabled={isLocked} // Disable button if answer is locked
             >
               <h4>{currentObstacle.st2header}</h4>
               <p>{currentObstacle.st2text}</p>
             </button>
           </div>
 
-          {selectedStrategy && (
+          {selectedStrategy && !isLocked && (
+            <button className="lock-button" onClick={handleLockAnswer}>
+              Lock Selection
+            </button>
+          )}
+
+          {isLocked && (
             <div className="selected-strategy-message">
               <p>
                 You selected: <strong>{selectedStrategy.strategy}</strong>
@@ -148,14 +168,16 @@ export default function ObstacleListClient() {
       )}
 
       <div className="navigation-buttons">
-        <button
-          onClick={handleNext}
-          disabled={!selectedStrategy || currentObstacleIndex === study.obstacles.length - 1}
-          className="nav-button"
-        >
-          Next
-        </button>
-        {allSelected && (
+        {!isLastObstacle && isLocked && (
+          <button
+            onClick={handleNext}
+            disabled={currentObstacleIndex === study.obstacles.length - 1}
+            className="nav-button"
+          >
+            Next Obstacle
+          </button>
+        )}
+        {isLastObstacle && isLocked && (
           <button onClick={handleSubmit} disabled={isSaving} className="nav-button">
             {isSaving ? "Submitting..." : "Submit"}
           </button>

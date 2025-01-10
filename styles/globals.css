@@ -73,7 +73,7 @@ body {
 }
 
 .detailedBox.selected {
-  border: 2px solid #7d3c98; /* Highlight selected box */
+  border: 2px solid #7d3c98; /* Purple */
 }
 
 .detailedBox:hover {
@@ -193,14 +193,11 @@ body {
   transform: scale(1.05);
 }
 
-.strategy-button h4 {
-  font-size: 18px;
-  margin: 0 0 5px;
-}
-
-.strategy-button p {
-  font-size: 14px;
-  margin: 0;
+.strategy-button.disabled-hover:hover {
+  background-color: white; /* Revert to default background */
+  color: #9b59b6; /* Revert to default color */
+  transform: none; /* Remove scaling */
+  cursor: not-allowed;
 }
 
 /* Navigation Buttons */
@@ -211,7 +208,8 @@ body {
   margin-top: 20px;
 }
 
-.nav-button {
+.nav-button,
+.lock-button {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #9b59b6; /* Purple */
@@ -221,11 +219,14 @@ body {
   cursor: pointer;
 }
 
-.nav-button:disabled {
-  display: none; /* Completely hides the Back button when disabled */
+.nav-button:disabled,
+.lock-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
-.nav-button:hover:not(:disabled) {
+.nav-button:hover:not(:disabled),
+.lock-button:hover:not(:disabled) {
   background-color: #7d3c98; /* Darker purple */
 }
 
