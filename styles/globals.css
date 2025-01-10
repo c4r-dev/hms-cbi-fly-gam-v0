@@ -200,6 +200,16 @@ body {
   cursor: not-allowed;
 }
 
+.strategy-button h4 {
+  font-size: 20px; /* Increased size for headers */
+  margin: 0 0 8px; /* Adjusted margin for better spacing */
+}
+
+.strategy-button p {
+  font-size: 18px; /* Increased size for text */
+  margin: 0;
+}
+
 /* Navigation Buttons */
 .navigation-buttons {
   display: flex;
