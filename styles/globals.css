@@ -103,20 +103,6 @@ body {
   margin-bottom: 15px;
 }
 
-.continue-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #9b59b6; /* Purple */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.continue-button:hover {
-  background-color: #7d3c98; /* Darker purple */
-}
-
 /* Obstacle Container */
 .obstacle-container {
   max-width: 800px;
@@ -200,6 +186,16 @@ body {
   cursor: not-allowed;
 }
 
+.strategy-button h4 {
+  font-size: 22px; /* Increased size for headers */
+  margin: 0 0 10px; /* Adjusted margin for better spacing */
+}
+
+.strategy-button p {
+  font-size: 20px; /* Increased size for text */
+  margin: 0;
+}
+
 /* Navigation Buttons */
 .navigation-buttons {
   display: flex;
@@ -208,10 +204,8 @@ body {
   margin-top: 20px;
 }
 
-.nav-button,
 .lock-button,
-.print-button,
-.back-button {
+.nav-button {
   padding: 10px 20px;
   font-size: 16px;
   background-color: #9b59b6; /* Purple */
@@ -219,39 +213,37 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
-.nav-button:disabled,
-.lock-button:disabled,
-.print-button:disabled,
-.back-button:disabled {
+.lock-button:hover,
+.nav-button:hover {
+  background-color: #7d3c98; /* Darker purple */
+}
+
+.nav-button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
 
-.nav-button:hover:not(:disabled),
-.lock-button:hover:not(:disabled),
-.print-button:hover:not(:disabled),
-.back-button:hover:not(:disabled) {
-  background-color: #7d3c98; /* Darker purple */
-}
-
 /* Back to Studies Button */
 .back-button {
-  background-color: #8e44ad; /* Purple */
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #9b59b6; /* Same as lock-button */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .back-button:hover {
-  background-color: #7d3c98; /* Darker purple */
+  background-color: #7d3c98; /* Same hover as lock-button */
 }
 
-/* Print Button */
-.print-button {
-  background-color: #8e44ad; /* Purple */
-}
-
-.print-button:hover {
-  background-color: #7d3c98; /* Darker purple */
+/* Spacer */
+.spacer {
+  margin-bottom: 20px; /* Add space between buttons */
 }
 
 /* Table for Obstacles */

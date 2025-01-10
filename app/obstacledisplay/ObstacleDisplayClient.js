@@ -82,10 +82,10 @@ export default function ObstacleDisplayClient({ study, selections }) {
       )}
 
       <div className="navigation-buttons">
-        <button onClick={handleGoBack} className="back-button">
+        <button onClick={handleGoBack} className="nav-button">
           Go Back to Studies
         </button>
-        <button onClick={handlePrint} className="print-button">
+        <button onClick={handlePrint} className="nav-button">
           Print to PDF
         </button>
       </div>

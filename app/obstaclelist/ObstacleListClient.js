@@ -131,7 +131,7 @@ export default function ObstacleListClient() {
                 selectedStrategy?.strategy === currentObstacle.st1header ? "selected" : ""
               } ${isLocked ? "disabled-hover" : ""}`}
               onClick={() => handleStrategySelection(currentObstacle.st1header, currentObstacle.st1texta)}
-              disabled={isLocked} // Disable button if answer is locked
+              disabled={isLocked}
             >
               <h4>{currentObstacle.st1header}</h4>
               <p>{currentObstacle.st1text}</p>
@@ -141,7 +141,7 @@ export default function ObstacleListClient() {
                 selectedStrategy?.strategy === currentObstacle.st2header ? "selected" : ""
               } ${isLocked ? "disabled-hover" : ""}`}
               onClick={() => handleStrategySelection(currentObstacle.st2header, currentObstacle.st2texta)}
-              disabled={isLocked} // Disable button if answer is locked
+              disabled={isLocked}
             >
               <h4>{currentObstacle.st2header}</h4>
               <p>{currentObstacle.st2text}</p>
@@ -169,11 +169,7 @@ export default function ObstacleListClient() {
 
       <div className="navigation-buttons">
         {!isLastObstacle && isLocked && (
-          <button
-            onClick={handleNext}
-            disabled={currentObstacleIndex === study.obstacles.length - 1}
-            className="nav-button"
-          >
+          <button onClick={handleNext} className="nav-button">
             Next Obstacle
           </button>
         )}
@@ -183,7 +179,8 @@ export default function ObstacleListClient() {
           </button>
         )}
       </div>
-      <button onClick={() => router.back()} className="back-button">
+      <div className="spacer"></div>
+      <button onClick={() => router.push("/")} className="back-button">
         Go Back to Studies
       </button>
     </div>
