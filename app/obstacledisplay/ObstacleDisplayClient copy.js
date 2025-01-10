@@ -1,11 +1,23 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 export default function ObstacleDisplayClient({ study, selections }) {
+  const router = useRouter();
+
   if (!study) {
     return <p>Error: No study data provided.</p>;
   }
 
   const { id, title, description, narative, obstacles } = study;
+
+  const handlePrint = () => {
+    window.print(); // Prints the entire page
+  };
+
+  const handleGoBack = () => {
+    router.push("/"); // Navigate to the root of the application
+  };
 
   return (
     <div className="obstacle-container">
@@ -68,6 +80,15 @@ export default function ObstacleDisplayClient({ study, selections }) {
       ) : (
         <p>No obstacles available.</p>
       )}
+
+      <div className="navigation-buttons">
+        <button onClick={handleGoBack} className="back-button">
+          Go Back to Studies
+        </button>
+        <button onClick={handlePrint} className="print-button">
+          Print to PDF
+        </button>
+      </div>
     </div>
   );
 }
