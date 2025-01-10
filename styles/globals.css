@@ -268,11 +268,14 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
+  table-layout: fixed; /* Ensures equal width for columns */
 }
 
 th, td {
   padding: 10px;
   text-align: left;
+  width: 33.33%; /* Equal width for all columns */
+  word-wrap: break-word; /* Ensures text doesn't overflow */
 }
 
 th {
@@ -280,9 +283,9 @@ th {
   font-weight: bold;
 }
 
-td {
+/* td {
   vertical-align: top;
-}
+} */
 
 /* Highlighted Table Cell */
 .highlight {
