@@ -1,16 +1,11 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+export default function ObstacleDisplayClient({ study, selections }) {
+  if (!study) {
+    return <p>Error: No study data provided.</p>;
+  }
 
-export default function ObstacleDisplayClient() {
-  const searchParams = useSearchParams();
-
-  const id = searchParams.get("id");
-  const title = searchParams.get("title");
-  const description = searchParams.get("description");
-  const narative = searchParams.get("narative");
-  const obstacles = JSON.parse(searchParams.get("obstacles") || "[]");
-  const selections = JSON.parse(searchParams.get("selections") || "{}");
+  const { id, title, description, narative, obstacles } = study;
 
   return (
     <div className="obstacle-container">
@@ -20,25 +15,57 @@ export default function ObstacleDisplayClient() {
       <p><strong>Narrative:</strong> {narative}</p>
 
       <h2>Obstacles</h2>
-      {obstacles.length > 0 ? (
-        <ul>
+      {obstacles && obstacles.length > 0 ? (
+        <div>
           {obstacles.map((obstacle, index) => (
-            <li key={index}>
-              <p><strong>Header:</strong> {obstacle.header}</p>
-              <p><strong>Text:</strong> {obstacle.text}</p>
-            </li>
+            <div key={index} className="obstacle-table">
+              <h3>Obstacle {index + 1}</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Obstacle Details</th>
+                    <th>Strategy 1</th>
+                    <th>Strategy 2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p><strong>Header:</strong> {obstacle.header}</p>
+                      <p><strong>Text:</strong> {obstacle.text}</p>
+                    </td>
+                    <td>
+                      {obstacle.st1header && (
+                        <>
+                          <p><strong>Header:</strong> {obstacle.st1header}</p>
+                          <p><strong>Text:</strong> {obstacle.st1text}</p>
+                        </>
+                      )}
+                    </td>
+                    <td>
+                      {obstacle.st2header && (
+                        <>
+                          <p><strong>Header:</strong> {obstacle.st2header}</p>
+                          <p><strong>Text:</strong> {obstacle.st2text}</p>
+                        </>
+                      )}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <p>No obstacles available.</p>
       )}
 
       <h2>Selections</h2>
-      {Object.keys(selections).length > 0 ? (
+      {selections && Object.keys(selections).length > 0 ? (
         <ul>
           {Object.entries(selections).map(([index, selection]) => (
             <li key={index}>
-              <p><strong>Obstacle {index}:</strong></p>
+              <p><strong>Obstacle {parseInt(index) + 1}:</strong></p>
               <p><strong>Strategy:</strong> {selection.strategy}</p>
               <p><strong>Impact:</strong> {selection.impactText}</p>
             </li>

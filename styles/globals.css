@@ -285,3 +285,9 @@ th {
 td {
   vertical-align: top;
 }
+
+/* Highlighted Table Cell */
+.highlight {
+  font-weight: bold;
+  background-color: #e6f7ff; /* Light blue for emphasis */
+}
