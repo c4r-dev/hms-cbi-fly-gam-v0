@@ -12,7 +12,7 @@ export default function ObstacleListClient() {
   const description = searchParams.get("description");
   const narative = searchParams.get("narative");
 
-  const [obstacles, setObstacles] = useState([]);
+  const [study, setStudy] = useState(null);
   const [currentObstacleIndex, setCurrentObstacleIndex] = useState(0);
   const [selections, setSelections] = useState({});
   const [loading, setLoading] = useState(true);
@@ -29,10 +29,10 @@ export default function ObstacleListClient() {
         if (!res.ok) throw new Error("Failed to fetch data.");
         const data = await res.json();
 
-        const study = data.find((study) => study.id === parseInt(id));
-        if (!study) throw new Error("Study not found.");
+        const studyData = data.find((study) => study.id === parseInt(id));
+        if (!studyData) throw new Error("Study not found.");
 
-        setObstacles(study.obstacles || []);
+        setStudy(studyData);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -44,7 +44,7 @@ export default function ObstacleListClient() {
   }, [id]);
 
   const handleNext = () => {
-    setCurrentObstacleIndex((prevIndex) => Math.min(prevIndex + 1, obstacles.length - 1));
+    setCurrentObstacleIndex((prevIndex) => Math.min(prevIndex + 1, study.obstacles.length - 1));
   };
 
   const handleBack = () => {
@@ -71,10 +71,6 @@ export default function ObstacleListClient() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           studyId: id,
-          title,
-          description,
-          narative,
-          obstacles,
           selections,
         }),
       });
@@ -88,11 +84,7 @@ export default function ObstacleListClient() {
 
       // Construct query string and navigate to obstacledisplay
       const queryParams = new URLSearchParams({
-        id,
-        title,
-        description,
-        narative,
-        obstacles: JSON.stringify(obstacles),
+        study: JSON.stringify(study), // Pass the study object
         selections: JSON.stringify(selections),
       }).toString();
 
@@ -116,9 +108,9 @@ export default function ObstacleListClient() {
     return <p>Error: {error}</p>;
   }
 
-  const currentObstacle = obstacles[currentObstacleIndex];
+  const currentObstacle = study.obstacles[currentObstacleIndex];
   const selectedStrategy = selections[currentObstacleIndex];
-  const allSelected = Object.keys(selections).length === obstacles.length;
+  const allSelected = Object.keys(selections).length === study.obstacles.length;
 
   return (
     <div className="obstacle-container">
@@ -170,7 +162,7 @@ export default function ObstacleListClient() {
         </button>
         <button
           onClick={handleNext}
-          disabled={!selectedStrategy || currentObstacleIndex === obstacles.length - 1}
+          disabled={!selectedStrategy || currentObstacleIndex === study.obstacles.length - 1}
           className="nav-button"
         >
           Next
