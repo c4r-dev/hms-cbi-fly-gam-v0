@@ -1,10 +1,12 @@
 "use client";
 
 import { Suspense } from "react";
+import { useRouter } from "next/navigation";
 import ObstacleDisplayClient from "./ObstacleDisplayClient";
 import "../../styles/globals.css"; // Ensure global styles are loaded
 
 export default function ObstacleDisplayPage({ searchParams }) {
+  const router = useRouter();
   const study = searchParams.study ? JSON.parse(searchParams.study) : null;
   const selections = searchParams.selections ? JSON.parse(searchParams.selections) : null;
 
@@ -16,7 +18,13 @@ export default function ObstacleDisplayPage({ searchParams }) {
     <div className="container">
       {/* Header Section */}
       <div className="header">
-        <img src="/favicon.ico" alt="Favicon" className="favicon" />
+        <img
+          src="/favicon.ico"
+          alt="Favicon"
+          className="favicon"
+          onClick={() => router.push("/")} // Add click handler
+          style={{ cursor: "pointer" }} // Change cursor to pointer for better UX
+        />
         <h1 className="title">Weigh choices to mask a study</h1>
       </div>
 

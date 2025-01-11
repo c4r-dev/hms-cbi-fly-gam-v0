@@ -49,7 +49,7 @@ export default function ObstacleListClient() {
   };
 
   const handleStrategySelection = (strategy, impactText) => {
-    if (lockedAnswers[currentObstacleIndex]) return; // Prevent changes after locking
+    if (lockedAnswers[currentObstacleIndex]) return;
 
     setSelections((prevSelections) => ({
       ...prevSelections,

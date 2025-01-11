@@ -35,15 +35,15 @@ export default function ObstacleDisplayClient({ study, selections }) {
                 <table>
                   <thead>
                     <tr>
-                      <th>Obstacle</th>
-                      <th>Strategy 1</th>
-                      <th>Strategy 2</th>
+                      <th><p><strong>{obstacle.header}</strong></p></th>
+                      <th><p><strong>{obstacle.st1header}</strong></p></th>
+                      <th><p><strong>{obstacle.st2header}</strong></p></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>
-                        <p><strong>{obstacle.header}</strong></p>
+                        
                         <p>{obstacle.text}</p>
                       </td>
                       <td
@@ -53,7 +53,7 @@ export default function ObstacleDisplayClient({ study, selections }) {
                       >
                         {obstacle.st1header && (
                           <>
-                            <p><strong>{obstacle.st1header}</strong></p>
+                            
                             <p>{obstacle.st1text}</p>
                           </>
                         )}
@@ -65,7 +65,7 @@ export default function ObstacleDisplayClient({ study, selections }) {
                       >
                         {obstacle.st2header && (
                           <>
-                            <p><strong>{obstacle.st2header}</strong></p>
+                            
                             <p>{obstacle.st2text}</p>
                           </>
                         )}

@@ -105,7 +105,7 @@ body {
 
 /* Obstacle Container */
 .obstacle-container {
-  max-width: 800px;
+  width: 90%; /* Make it fill 90% of the screen width */
   margin: 0 auto;
   margin-top: 12px;
   padding: 20px;
@@ -230,15 +230,16 @@ body {
 .back-button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #9b59b6; /* Same as lock-button */
-  color: white;
+  background-color: #e0e0e0; /* Updated background color */
+  color: #333; /* Text color for contrast */
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .back-button:hover {
-  background-color: #7d3c98; /* Same hover as lock-button */
+  background-color: #bdbdbd; /* Darker shade on hover */
 }
 
 /* Spacer */
@@ -254,12 +255,12 @@ body {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
+  margin: 5px 0;
   table-layout: fixed; /* Ensures equal width for columns */
 }
 
 th, td {
-  padding: 10px;
+  padding: 5px;
   text-align: left;
   width: 33.33%; /* Equal width for all columns */
   word-wrap: break-word; /* Ensures text doesn't overflow */
