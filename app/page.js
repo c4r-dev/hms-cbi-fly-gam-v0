@@ -41,11 +41,11 @@ export default function Home() {
           alt="Favicon"
           className="favicon"
         />
-        <h1 className="title">Weigh choices to mask a study</h1>
+        <h1 className="title">Help researchers navigate a path to masking their study</h1>
       </div>
 
       {/* Centered Title */}
-      <h2 className="centeredTitle">What research interests you most?</h2>
+      <h2 className="centeredTitle">Select a team to help</h2>
 
       {/* Study Selection */}
       <div className="buttonGrid">
@@ -66,13 +66,13 @@ export default function Home() {
 
       {/* Footer Section */}
       <div className="footer">
-        {selectedStudy ? (
+        {/* {selectedStudy ? (
           <p className="selectionMessage">
             You selected: <strong>{selectedStudy.title}</strong>
           </p>
         ) : (
           <p className="selectionMessage">Please select a study to continue.</p>
-        )}
+        )} */}
         <button onClick={handleContinue} className="lock-button">
           Continue
         </button>

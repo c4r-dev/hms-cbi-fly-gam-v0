@@ -117,19 +117,24 @@ export default function ObstacleListClient() {
 
   return (
     <div className="obstacle-container">
-      <h1 style={{ marginTop: "35px" }}>Obstacle List for {title}</h1>
+      
+      <button onClick={() => router.push("/")} className="back-button">
+        Select a different scenario
+      </button>
+      <div className="spacer"><br></br></div>
+      <div className="spacer"></div>
       {currentObstacle ? (
         <>
           <div className="obstacle-header">
             <h2>{currentObstacle.header}</h2>
             <p>{currentObstacle.text}</p>
+            <h3>Which choice do you think is better?</h3>
           </div>
 
           <div className="strategy-buttons">
             <button
-              className={`strategy-button ${
-                selectedStrategy?.strategy === currentObstacle.st1header ? "selected" : ""
-              } ${isLocked ? "disabled-hover" : ""}`}
+              className={`strategy-button ${selectedStrategy?.strategy === currentObstacle.st1header ? "selected" : ""
+                } ${isLocked ? "disabled-hover" : ""}`}
               onClick={() => handleStrategySelection(currentObstacle.st1header, currentObstacle.st1texta)}
               disabled={isLocked}
             >
@@ -137,9 +142,8 @@ export default function ObstacleListClient() {
               <p>{currentObstacle.st1text}</p>
             </button>
             <button
-              className={`strategy-button ${
-                selectedStrategy?.strategy === currentObstacle.st2header ? "selected" : ""
-              } ${isLocked ? "disabled-hover" : ""}`}
+              className={`strategy-button ${selectedStrategy?.strategy === currentObstacle.st2header ? "selected" : ""
+                } ${isLocked ? "disabled-hover" : ""}`}
               onClick={() => handleStrategySelection(currentObstacle.st2header, currentObstacle.st2texta)}
               disabled={isLocked}
             >
@@ -179,10 +183,6 @@ export default function ObstacleListClient() {
           </button>
         )}
       </div>
-      <div className="spacer"></div>
-      <button onClick={() => router.push("/")} className="back-button">
-        Go Back to Studies
-      </button>
     </div>
   );
 }

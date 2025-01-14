@@ -107,7 +107,7 @@ body {
 .obstacle-container {
   width: 90%; /* Make it fill 90% of the screen width */
   margin: 0 auto;
-  margin-top: 12px;
+  margin-top: 30px;
   padding: 20px;
   text-align: center;
 }
@@ -228,7 +228,7 @@ body {
 
 /* Back to Studies Button */
 .back-button {
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-size: 16px;
   background-color: #e0e0e0; /* Updated background color */
   color: #333; /* Text color for contrast */
@@ -236,6 +236,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s;
+  float: left; /* Force the button to align to the left */
 }
 
 .back-button:hover {

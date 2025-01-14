@@ -15,14 +15,16 @@ export default function ObstacleDisplayClient({ study, selections }) {
     window.print();
   };
 
-  const handleGoBack = () => {
-    router.push("/");
-  };
-
   return (
     <div className="obstacle-container">
-      <p><strong>{title}</strong></p>
-      <p><strong>{description}</strong></p>
+
+      <button onClick={() => router.push("/")} className="back-button">
+        Select a different scenario
+      </button>
+      <div className="spacer"><br></br></div>
+      {/* <div className="spacer"></div> */}
+      <h2>{title}</h2>
+      <h3>{description}</h3>
 
       {obstacles && obstacles.length > 0 ? (
         <div>
@@ -65,9 +67,9 @@ export default function ObstacleDisplayClient({ study, selections }) {
       <p><strong>{narative}</strong></p>
 
       <div className="navigation-buttons">
-        <button onClick={handleGoBack} className="back-button">
+        {/* <button onClick={handleGoBack} className="back-button">
           Go Back to Studies
-        </button>
+        </button> */}
         <button onClick={handlePrint} className="nav-button">
           Print to PDF
         </button>

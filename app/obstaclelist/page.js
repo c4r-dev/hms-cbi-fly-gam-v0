@@ -19,7 +19,7 @@ export default function ObstacleListPage() {
           onClick={() => router.push("/")} // Add click handler
           style={{ cursor: "pointer" }} // Change cursor to pointer for better UX
         />
-        <h1 className="title">Weigh choices to mask a study</h1>
+        <h1 className="title">Help researchers navigate a path to masking their study</h1>
       </div>
 
       <Suspense fallback={<p>Loading obstacle list...</p>}>
