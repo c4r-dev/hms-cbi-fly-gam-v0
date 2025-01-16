@@ -1,3 +1,8 @@
+/* Apply text-wrap: balance to all elements */
+* {
+  text-wrap: balance;
+}
+
 /* Global Font Setting */
 body {
   font-family: 'GeneralSans', sans-serif;
