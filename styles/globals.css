@@ -11,10 +11,19 @@ body {
   box-sizing: border-box;
 }
 
+.full-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  /* background-color: #f5f5f5; */
+  min-height: 100vh;
+}
+
 /* General Container */
 .container {
   max-width: 100%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding: 20px;
   text-align: center;
 }

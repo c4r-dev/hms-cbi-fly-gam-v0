@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation"; // App Router's navigation hook
 import "../styles/globals.css"; // Ensure global styles are loaded
 
+import Header from "./components/Header/Header";
+
 export default function Home() {
   const [studies, setStudies] = useState([]);
   const [selectedStudy, setSelectedStudy] = useState(null);
@@ -33,49 +35,55 @@ export default function Home() {
   };
 
   return (
-    <div className="container">
-      {/* Header Section */}
-      <div className="header">
-        <img
-          src="/favicon.ico"
-          alt="Favicon"
-          className="favicon"
-        />
-        <h1 className="title">Help researchers navigate a path to masking their study</h1>
-      </div>
+    <div className="full-page">
+      <div className="container">
 
-      {/* Centered Title */}
-      <h2 className="centeredTitle">Select a team to help</h2>
+        <Header />
 
-      {/* Study Selection */}
-      <div className="buttonGrid">
-        {studies.map((study) => (
-          <div
-            key={study.id}
-            onClick={() => handleStudyClick(study)}
-            className={`detailedBox ${
-              selectedStudy?.id === study.id ? "selected" : ""
-            }`}
-            style={{ backgroundColor: study.color }}
-          >
-            <h3>{study.title}</h3>
-            <p>{study.description}</p>
-          </div>
-        ))}
-      </div>
 
-      {/* Footer Section */}
-      <div className="footer">
-        {/* {selectedStudy ? (
-          <p className="selectionMessage">
-            You selected: <strong>{selectedStudy.title}</strong>
-          </p>
-        ) : (
-          <p className="selectionMessage">Please select a study to continue.</p>
-        )} */}
-        <button onClick={handleContinue} className="lock-button">
-          Continue
-        </button>
+        {/* Header Section */}
+        {/* <div className="header">
+          <img
+            src="/favicon.ico"
+            alt="Favicon"
+            className="favicon"
+          />
+          <h1 className="title">Help researchers navigate a path to masking their study</h1>
+        </div> */}
+
+        {/* Centered Title */}
+        <h2 className="centeredTitle">Select a team to help</h2>
+
+        {/* Study Selection */}
+        <div className="buttonGrid">
+          {studies.map((study) => (
+            <div
+              key={study.id}
+              onClick={() => handleStudyClick(study)}
+              className={`detailedBox ${
+                selectedStudy?.id === study.id ? "selected" : ""
+              }`}
+              style={{ backgroundColor: study.color }}
+            >
+              <h3>{study.title}</h3>
+              <p>{study.description}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer Section */}
+        <div className="footer">
+          {/* {selectedStudy ? (
+            <p className="selectionMessage">
+              You selected: <strong>{selectedStudy.title}</strong>
+            </p>
+          ) : (
+            <p className="selectionMessage">Please select a study to continue.</p>
+          )} */}
+          <button onClick={handleContinue} className="lock-button">
+            Continue
+          </button>
+        </div>
       </div>
     </div>
   );
