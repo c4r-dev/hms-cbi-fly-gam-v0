@@ -11,7 +11,7 @@ export default function ObstacleListPage() {
   return (
     <div className="container">
       {/* Header Section */}
-      <div className="header">
+      {/* <div className="header">
         <img
           src="/favicon.ico"
           alt="Favicon"
@@ -20,7 +20,7 @@ export default function ObstacleListPage() {
           style={{ cursor: "pointer" }} // Change cursor to pointer for better UX
         />
         <h1 className="title">Help researchers navigate a path to masking their study</h1>
-      </div>
+      </div> */}
 
       <Suspense fallback={<p>Loading obstacle list...</p>}>
         <ObstacleListClient />

@@ -1,4 +1,4 @@
-header {
+.header-container {
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -6,14 +6,9 @@ header {
 
   .header-bar{
     width: 100%;
-    /* height: 100px; */
-    /* height: 5%; */
     display: flex;
-    /* justify-content: center; */
     align-items: center;
-    /* background-color: #ca5656; */
     color: #ffffff83;
-    /* padding: 1rem; */
     text-align: center;
     justify-content: space-between;
     min-height: 36px;
@@ -36,11 +31,13 @@ header {
 
   .logo {
     /* width: 100px; */
-    height: 100%;
+    /* height: 100%; */
     /* width: 3vh; */
     /* aspect-ratio: 1/1; */
     /* width: 100%; */
     cursor: pointer; /* indicates clickable */
+    height: 36px;
+    width: 36px;
   }
 
 
@@ -63,16 +60,12 @@ header {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    /* width: 100%; */
-    /* height: 100%; */
+    display: flex;
   }
 
   .help-tooltip-image {
     height: 32px;
     width: 32px;
-    /* width: 100%; */
-    /* height: 100%; */
-    /* filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(0%) contrast(100%); */
   }
 
   .help-tooltip-image:hover {
@@ -90,6 +83,7 @@ header {
     .logo-desktop {
       display: flex;
       gap: 2rem;
+      align-items: center;
     }
     .title-bar {
       display: none;
@@ -98,4 +92,8 @@ header {
 
   .header-guide-button-mobile {
     margin-left: 1rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
   }
