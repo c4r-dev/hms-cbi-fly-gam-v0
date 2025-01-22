@@ -93,13 +93,13 @@ export default function CustomModal({ isOpen, closeModal }) {
             X
           </Button>
           <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ mb: 2 }}>
-            Your goal is to try and guess a secret rule that matches a sequence of 3 numbers.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </Typography>
           <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ mb: 2 }}>
-            But there is a catch—you can’t guess the rule directly!
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
           </Typography>
           <Typography id="modal-modal-title" variant="h6" component="h2" sx={{ mb: 2 }}>
-            Form a hypothesis by interpreting results from your guesses, then submit your final hypothesis to see if you were correct!
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </Typography>
           {/* <Typography id="modal-modal-title" variant="h6" component="h2">
             Text in a modal
