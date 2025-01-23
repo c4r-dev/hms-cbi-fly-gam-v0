@@ -17,7 +17,7 @@ study data example:
         "st1text": "Create a dedicated team responsible for masking. Task the team with developing standard protocols for masking at each stage of the study. Support the team in coordinating across sites, addressing logistical challenges, and ensuring compliance.",
         "st2header": "Pilot Testing",
         "st2text": "Conduct pilot testing of masking procedures. Identify and address operational bottlenecks early. Train personnel (e.g., site coordinators, data managers) on masking protocols. Adjust workflows based on lessons learned during the pilot phase.",
-        "st1texta": "Creating a dedicated team ensures consistent implementation of masking. This team can make sure that the same procedures are used across sites. It demonstrates the company’s commitment to rigorous scientific practices.",
+        "st1texta": "Creating a dedicated team ensures consistent implementation of masking. This team can make sure that the same procedures are used across sites. It demonstrates the company's commitment to rigorous scientific practices.",
         "st2texta": "Pilot testing helps identify issues early and refine procedures. It allows adjustments based on lessons learned during the pilot phase, ultimately enhancing the study's quality and reliability."
       },
       {
@@ -45,23 +45,38 @@ study data example:
 */
 
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-export default function ObstacleDisplayClient({ study, selections }) {
+export default function ObstacleDisplayClient({ study, selections = [] }) {
   const router = useRouter();
 
-  if (!study) {
-    return <p>Error: No study data provided.</p>;
-  }
 
   const { id, title, description, narative, obstacles } = study;
+
+  // Initialize state based on the current selections
+  const [selectedStrategies, setSelectedStrategies] = useState(
+    obstacles.map((_, index) => selections[index]?.strategy)
+  );
 
   const handlePrint = () => {
     window.print();
   };
 
+  // Function to toggle the selected strategy
+  const toggleStrategy = (index, strategy) => {
+    setSelectedStrategies((prevStrategies) => {
+      const newStrategies = [...prevStrategies];
+      newStrategies[index] = strategy;
+      return newStrategies;
+    });
+  };
+
+  if (!study) {
+    return <p>Error: No study data provided.</p>;
+  }
+
   return (
     <div className="obstacle-container">
-
       <button onClick={() => router.push("/")} className="back-button">
         Select a different scenario
       </button>
@@ -73,7 +88,8 @@ export default function ObstacleDisplayClient({ study, selections }) {
       {obstacles && obstacles.length > 0 ? (
         <div>
           {obstacles.map((obstacle, index) => {
-            const selectedStrategy = selections[index]?.strategy;
+            // Use the selectedStrategies state instead of directly accessing selections
+            const selectedStrategy = selectedStrategies[index];
 
             return (
               <div key={index} className="obstacle-table">
@@ -90,14 +106,22 @@ export default function ObstacleDisplayClient({ study, selections }) {
                       <td>
                         <p>{obstacle.text}</p>
                       </td>
-                      <td className={obstacle.st1header === selectedStrategy ? "highlight" : ""}>
+                      {/* 1ST interactive column */}
+                      <td
+                        className={obstacle.st1header === selectedStrategy ? "highlight" : ""}
+                        onClick={() => toggleStrategy(index, obstacle.st1header)}
+                      >
                         {obstacle.st1header && (
-                          <p>{obstacle.st1header === selectedStrategy ? obstacle.st1texta : obstacle.st1text}</p>
+                          <p>{obstacle.st1header === selectedStrategy ? <strong>{obstacle.st1texta}</strong> : obstacle.st1text}</p>
                         )}
                       </td>
-                      <td className={obstacle.st2header === selectedStrategy ? "highlight" : ""}>
+                      {/* 2ND interactive column */}
+                      <td
+                        className={obstacle.st2header === selectedStrategy ? "highlight" : ""}
+                        onClick={() => toggleStrategy(index, obstacle.st2header)}
+                      >
                         {obstacle.st2header && (
-                          <p>{obstacle.st2header === selectedStrategy ? obstacle.st2texta : obstacle.st2text}</p>
+                          <p>{obstacle.st2header === selectedStrategy ? <strong>{obstacle.st2texta}</strong> : obstacle.st2text}</p>
                         )}
                       </td>
                     </tr>
