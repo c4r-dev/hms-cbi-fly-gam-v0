@@ -12,7 +12,7 @@ export default function Home() {
   const [studies, setStudies] = useState([]);
   const [selectedStudy, setSelectedStudy] = useState(null);
   const router = useRouter(); // Initialize Next.js router
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [alertMessage, setAlertMessage] = useState("Please select a study first.");
 
@@ -65,7 +65,7 @@ export default function Home() {
       <CustomAlert triggerOpen={isAlertOpen} message={alertMessage} onClose={closeAlert} />
       <CustomModal isOpen={isModalOpen} closeModal={closeModal} />
       <Header onLogoClick={handleLogoClick} onHelpClick={handleHelpClick} />
-      <div className="container">
+      <div className="grid-items-container">
         {/* Centered Title */}
         <h2 className="centeredTitle">Select a team to help</h2>
 
